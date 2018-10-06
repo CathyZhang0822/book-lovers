@@ -1,0 +1,39 @@
+<% include ../partials/header %>
+<h1> index page !</h1>
+
+<!--rendered data-->
+<div align="center" class="container">
+    <form method="POST" action='/books/new'>
+        <input type="text" class="form" name = "title" placeholder="Enter Title">
+        <input type="text" class="form" name = "author" placeholder="Enter Author">
+        <button>Add A New Book</button>
+    </form> 
+</div>
+
+
+<!--rendered data-->
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Author</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </head>
+        <tbody>
+            <% for(var i = 0; i < books.length; i++){ %>
+                <tr>
+                  <th scope="row"><%= i+1 %></th>
+                  <td><%= books[i].title %></td>
+                  <td><%= books[i].author %></td>
+                  <td>
+                        <a href="#" class="btn btn-primary btn-sm " role="button" >Edit</a> |
+                        <a href="#" class="btn btn-secondary btn-sm " role="button" >Delete</a>
+                  </td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</div>

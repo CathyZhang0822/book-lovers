@@ -1,0 +1,9 @@
+<% include partials/header %>
+<h1> index page !</h1>
+
+<!--rendered data-->
+<% users.forEach(function(user){ %>
+    <div>
+        <h2><%= user.name%></h2>
+    </div>
+<% }) %>

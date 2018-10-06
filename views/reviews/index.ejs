@@ -1,0 +1,24 @@
+<% include ../partials/header %>
+<h1> index page !</h1>
+
+<!--rendered data-->
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Average Rating</th>
+            </tr>
+        </head>
+        <tbody>
+            <% for(var i = 0; i < books.length; i++){ %>
+                <tr>
+                  <th scope="row"><%= i %>s</th>
+                  <td><%= books[i].title %></td>
+                  <td><%= books[i].avg_rating %></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</div>

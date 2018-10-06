@@ -1,9 +1,31 @@
 <% include partials/header %>
-<h1> index page !</h1>
+<h1 align = "center"> All Users </h1>
 
 <!--rendered data-->
-<% users.forEach(function(user){ %>
-    <div>
-        <h2><%= user.name%></h2>
-    </div>
-<% }) %>
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Created At</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </head>
+        <tbody>
+            <% for(var i = 0; i < users.length; i++){ %>
+                <tr>
+                  <th scope="row"><%= i+1 %></th>
+                  <td><%= users[i].name %></td>
+                  <td><%= users[i].email %></td>
+                  <td><%= users[i].created_at %></td>
+                  <td>
+                        <a href="#" class="btn btn-primary btn-sm " role="button" >Edit</a> |
+                        <a href="#" class="btn btn-secondary btn-sm " role="button" >Delete</a>
+                  </td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</div>

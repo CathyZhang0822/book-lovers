@@ -32,7 +32,7 @@ app.get("/", function(req, res){
     var q = "SELECT COUNT(*) As count FROM users";
     connection.query(q, function(err, results){
         if(err){
-            console.log(err.code)
+            console.log(err.code);
             throw err;
         } 
         var msg = "We have " + results[0].count + " users";
@@ -46,7 +46,7 @@ app.get("/users", function(req, res){
     var q = "SELECT * FROM users as users";
     connection.query(q, function(err, results){
         if(err){
-            console.log(err.code)
+            console.log(err.code);
             throw err;
         } 
         // render with data
@@ -65,8 +65,8 @@ app.get("/users/:id", function(req, res){
     console.log(q.replace('%s', id));
     connection.query(q.replace('%s', id), function(err, results){
         if(err){
-            console.log(err.code)
-            throw err;
+            console.log(err.code);
+            res.redirect("/users");
         } 
         res.render("show", {user : results})
     });
@@ -80,7 +80,7 @@ app.post("/users/:id", function(req,res){
    var id = req.params.id;
    connection.query('DELETE FROM users WHERE id = ?', [id], function(err, result){
       if (err) {
-          console.log(err.code)
+          console.log(err.code);
          res.redirect("/users");
       } else {
         flash("deleted");
@@ -109,7 +109,7 @@ app.get("/books", function(req, res){
     connection.query(q, function(err, results){
         if(err){
             console.log(err.code)
-            throw err;
+            res.redirect("/books");
         } 
         // render with data
         res.render("books/index", {books: results});
@@ -122,7 +122,7 @@ app.post("/books/new", function(req, res){
    connection.query('INSERT INTO books SET ?', newBook, function(err, result) {
        if(err){
             console.log(err.code)
-            throw err;
+            res.redirect("/books");
         } 
        console.log(result);
        res.redirect("/books");
@@ -180,13 +180,13 @@ app.get("/reviews", function(req, res) {
         connection.query("SELECT * FROM users", function(err, results) {
              if(err){
             console.log(err.code)
-            throw err;
+            res.redirect("/reviews");
         }
              var users = results;
              connection.query("SELECT * FROM books", function(err, results) {
                  if(err){
                     console.log(err.code)
-                    throw err;
+                    res.redirect("/reviews");
                 }
                  var all_books = results;
                  res.render("reviews/index", {all_books:all_books, users:users, books: reviews});

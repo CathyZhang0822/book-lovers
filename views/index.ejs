@@ -14,9 +14,9 @@
             </tr>
         </head>
         <tbody>
-            <% for(var i = 0; i < users.length; i++){ %>
+            <% for(var i = 1; i < users.length; i++){ %>
                 <tr>
-                  <th scope="row"><%= i+1 %></th>
+                  <th scope="row"><%= i %></th>
                   <td><a href = "/users/<%= users[i].id %>"><%= users[i].name %></a></td>
                   <td><%= users[i].email %></td>
                   <td><%= users[i].created_at %></td>

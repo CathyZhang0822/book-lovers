@@ -10,7 +10,7 @@ var connection = mysql.createConnection({
 
 
 // var data = [];
-// for(var i = 0; i < 10; i++){
+// for(var i = 0; i < 1000; i++){
 //     data.push([
 //         faker.internet.email(),
 //         faker.name.findName(),
@@ -21,6 +21,21 @@ var connection = mysql.createConnection({
 // var q = 'INSERT INTO users (email, name, created_at) VALUES ?';
  
 // connection.query(q, [data], function(err, result) {
+//   console.log(err);
+//   console.log(result);
+// });
+
+// var bookdata = [];
+// for(var i = 0; i < 100; i++){
+//     bookdata.push([
+//         faker.name.title(),
+//         faker.name.findName()
+//     ]);
+// }
+
+// var q = 'INSERT INTO books (title, author) VALUES ?';
+ 
+// connection.query(q, [bookdata], function(err, result) {
 //   console.log(err);
 //   console.log(result);
 // });

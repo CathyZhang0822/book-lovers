@@ -67,3 +67,19 @@ input[type=text]:focus {
     color: white;
     text-shadow: black 0.3em 0.3em 0.3em;
 }
+
+table, th, td 
+{
+   border: 1px solid black;
+   font-size: 27px;
+   text-align: center;
+}
+
+textarea
+{
+  
+  height: 35px;
+  width: 280px;
+  margin: 0 auto;
+  font-size: 27px;
+} 

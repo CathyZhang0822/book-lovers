@@ -1,5 +1,5 @@
 <% include ../partials/header %>
-<h1> index page !</h1>
+<h1 align="center"> All Books</h1>
 
 <!--rendered data-->
 <div align="center" class="container">
@@ -29,8 +29,7 @@
                   <td><%= books[i].title %></td>
                   <td><%= books[i].author %></td>
                   <td>
-                        <a href="#" class="btn btn-primary btn-sm " role="button" >Edit</a> |
-                        <a href="#" class="btn btn-secondary btn-sm " role="button" >Delete</a>
+                      <a href="/books/<%= books[i].id %>/edit" class="btn btn-primary btn-sm " role="button" >Edit</a>
                   </td>
                 </tr>
             <% } %>

@@ -5,7 +5,7 @@
 <div class="container">
     <table class="table table-striped">
         <thead>
-            <tr>
+            <tr align = "center">
                 <th scope="col">#</th>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
@@ -17,12 +17,14 @@
             <% for(var i = 0; i < users.length; i++){ %>
                 <tr>
                   <th scope="row"><%= i+1 %></th>
-                  <td><%= users[i].name %></td>
+                  <td><a href = "/users/<%= users[i].id %>"><%= users[i].name %></a></td>
                   <td><%= users[i].email %></td>
                   <td><%= users[i].created_at %></td>
-                  <td>
-                        <a href="#" class="btn btn-primary btn-sm " role="button" >Edit</a> |
-                        <a href="#" class="btn btn-secondary btn-sm " role="button" >Delete</a>
+                  <td valign="top" align="center">
+                        <form class="delete-form" action="/users/<%= users[i].id %>?_method=DELETE" method="POST">
+                                    <button class="btn btn-sm btn-danger">Delete</button>
+                        </form>
+                        
                   </td>
                 </tr>
             <% } %>

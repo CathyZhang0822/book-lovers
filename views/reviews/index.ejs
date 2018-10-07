@@ -1,5 +1,25 @@
 <% include ../partials/header %>
-<h1> index page !</h1>
+<h1 align = "center"> Books' Average Rating </h1>
+
+<!--rendered data-->
+<div align="center" class="container">
+    <form method="POST" action='/reviews/new'>
+        <select name="user_id">
+            <% for(var i = 0; i < users.length; i++){ %>
+                <option value=<%= users[i].id %>><%= users[i].name %></option>
+            <% } %>
+          <option value=null selected>Select An User</option>
+        </select>
+        <select name="books_id">
+            <% for(var i = 0; i < all_books.length; i++){ %>
+                <option value=<%= all_books[i].id %>><%= all_books[i].title %></option>
+            <% } %>
+          <option value=null selected>Select A Book</option>
+        </select>
+        <input type="text" class="form" name = "rating" placeholder="Fill in rating 0-10">
+        <button>Add A New Review</button>
+    </form> 
+</div>
 
 <!--rendered data-->
 <div class="container">

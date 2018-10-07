@@ -8,15 +8,15 @@
             <% for(var i = 0; i < users.length; i++){ %>
                 <option value=<%= users[i].id %>><%= users[i].name %></option>
             <% } %>
-          <option value=null selected>Select An User</option>
+          <option value=1 selected>Select An User</option>
         </select>
         <select name="books_id">
             <% for(var i = 0; i < all_books.length; i++){ %>
                 <option value=<%= all_books[i].id %>><%= all_books[i].title %></option>
             <% } %>
-          <option value=null selected>Select A Book</option>
+          <option value=1 selected>Select A Book</option>
         </select>
-        <input type="text" class="form" name = "rating" placeholder="Fill in rating 0-10">
+        <input type="text" class="form" name = "rating" value=0 placeholder="Fill in rating 0-10">
         <button>Add A New Review</button>
     </form> 
 </div>

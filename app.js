@@ -21,6 +21,11 @@ var connection = mysql.createConnection({
 
 connection.connect();
 
+setInterval(function () {
+    connection.query('SELECT 1');
+}, 5000);
+
+
 // RESTFUL ROUTES
 app.get("/", function(req, res){
     var q = "SELECT COUNT(*) As count FROM users";

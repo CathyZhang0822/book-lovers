@@ -31,7 +31,10 @@ connection.connect();
 app.get("/", function(req, res){
     var q = "SELECT COUNT(*) As count FROM users";
     connection.query(q, function(err, results){
-        if(err) throw err;
+        if(err){
+            console.log(err.code)
+            throw err;
+        } 
         var msg = "We have " + results[0].count + " users";
         res.render("home", {count: results[0].count});
         console.log(results[0].count);
@@ -42,7 +45,10 @@ app.get("/", function(req, res){
 app.get("/users", function(req, res){
     var q = "SELECT * FROM users as users";
     connection.query(q, function(err, results){
-        if(err) throw err;
+        if(err){
+            console.log(err.code)
+            throw err;
+        } 
         // render with data
         res.render("index", {users: results});
         console.log(results);
@@ -58,7 +64,10 @@ app.get("/users/:id", function(req, res){
     var q = " SELECT title, AVG(rating) FROM books JOIN reviews on reviews.user_id = %s GROUP BY title"
     console.log(q.replace('%s', id));
     connection.query(q.replace('%s', id), function(err, results){
-        if(err) throw err;
+        if(err){
+            console.log(err.code)
+            throw err;
+        } 
         res.render("show", {user : results})
     });
 })
@@ -71,6 +80,7 @@ app.post("/users/:id", function(req,res){
    var id = req.params.id;
    connection.query('DELETE FROM users WHERE id = ?', [id], function(err, result){
       if (err) {
+          console.log(err.code)
          res.redirect("/users");
       } else {
         flash("deleted");
@@ -82,7 +92,10 @@ app.post("/users/:id", function(req,res){
 app.post('/register', function(req,res){
     var person = {name: req.body.name, email: req.body.email};
     connection.query('INSERT INTO users SET ?', person, function(err, result) {
-    console.log(err);
+    if(err){
+            console.log(err.code)
+            throw err;
+        } 
     console.log(result);
     flash("success", "You have been added!");
     res.redirect("/");
@@ -94,7 +107,10 @@ app.get("/books", function(req, res){
     var q = "SELECT * FROM books as books";
     //var q = "SELECT title, AVG(rating) as avg_rating FROM books JOIN reviews on books.id = reviews.books_id GROUP BY books.id ORDER BY avg_rating"
     connection.query(q, function(err, results){
-        if(err) throw err;
+        if(err){
+            console.log(err.code)
+            throw err;
+        } 
         // render with data
         res.render("books/index", {books: results});
         console.log(results);
@@ -104,7 +120,10 @@ app.get("/books", function(req, res){
 app.post("/books/new", function(req, res){
    var newBook = {title: req.body.title, author: req.body.author};
    connection.query('INSERT INTO books SET ?', newBook, function(err, result) {
-       if(err) throw err;
+       if(err){
+            console.log(err.code)
+            throw err;
+        } 
        console.log(result);
        res.redirect("/books");
    });
@@ -118,6 +137,7 @@ app.get("/books/:id/edit", function(req, res){
    connection.query('SELECT * FROM books WHERE id = ?', [id], function(err, result){
       console.log(result);
       if (err) {
+          console.log(err.code)
           flash(err);
           res.redirect("/books");
       } else {
@@ -134,6 +154,7 @@ app.post("/books/:id", function(req, res){
   };
   connection.query('UPDATE books set ? WHERE id = ?', [updatedBook, id], function(err, result){
       if (err) {
+          console.log(err.code)
          res.redirec("/books");
       } else {
          req.flash("success", "Successfully updated book");
@@ -151,13 +172,22 @@ app.get("/reviews", function(req, res) {
     //     console.log(results);
     // });
     connection.query(q, function(err, results){
-        if(err) throw err;
+        if(err){
+            console.log(err.code)
+            throw err;
+        }
         var reviews = results;
         connection.query("SELECT * FROM users", function(err, results) {
-             if(err) throw err;
+             if(err){
+            console.log(err.code)
+            throw err;
+        }
              var users = results;
              connection.query("SELECT * FROM books", function(err, results) {
-                 if(err) throw err;
+                 if(err){
+                    console.log(err.code)
+                    throw err;
+                }
                  var all_books = results;
                  res.render("reviews/index", {all_books:all_books, users:users, books: reviews});
                  //console.log(reviews);
@@ -173,7 +203,10 @@ app.post("/reviews/new", function(req, res){
    //var newReview = {rating: 6, books_id: 1, user_id: 5};
    console.log(newReview);
    connection.query('INSERT INTO reviews SET ?', newReview, function(err, result) {
-       if(err) throw err;
+       if(err){
+            console.log(err.code)
+            throw err;
+        }
        console.log(result);
        res.redirect("/reviews");
    });

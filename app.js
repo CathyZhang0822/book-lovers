@@ -1,17 +1,11 @@
 var express = require('express');
-var session = require('express-session');
-var cookieParser = require('cookie-parser');
 var mysql = require('mysql');
 var bodyParser = require("body-parser");
-var flash = require('connect-flash');
 var app = express();
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
-app.use(cookieParser('secret'));
-app.use(session({cookie: { maxAge: 60000 }}));
-app.use(flash());
 
 // mysql://b53c45e6d8dda1:34effbd9@us-cdbr-iron-east-01.cleardb.net/heroku_8174187062a364b?reconnect=true
 var connection = mysql.createConnection({
@@ -83,7 +77,6 @@ app.post("/users/:id", function(req,res){
           console.log(err.code);
          res.redirect("/users");
       } else {
-        flash("deleted");
         res.redirect("/users");
       }
    });
@@ -97,7 +90,6 @@ app.post('/register', function(req,res){
             throw err;
         } 
     console.log(result);
-    flash("success", "You have been added!");
     res.redirect("/");
     });
 });
@@ -138,7 +130,6 @@ app.get("/books/:id/edit", function(req, res){
       console.log(result);
       if (err) {
           console.log(err.code)
-          flash(err);
           res.redirect("/books");
       } else {
           res.render("books/edit", {bookId: req.params.id, book: result[0]});
@@ -157,7 +148,6 @@ app.post("/books/:id", function(req, res){
           console.log(err.code)
          res.redirec("/books");
       } else {
-         req.flash("success", "Successfully updated book");
          res.redirect("/books");
       }
   });

@@ -25,7 +25,7 @@ var connection = mysql.createConnection({
   
 });
 
-//connection.connect();
+connection.connect();
 
 // RESTFUL ROUTES
 app.get("/", function(req, res){

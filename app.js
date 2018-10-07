@@ -84,7 +84,7 @@ app.post('/register', function(req,res){
     connection.query('INSERT INTO users SET ?', person, function(err, result) {
     console.log(err);
     console.log(result);
-    req.flash("success", "You have been added!");
+    flash("success", "You have been added!");
     res.redirect("/");
     });
 });

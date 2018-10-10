@@ -1,22 +1,5 @@
+I implemented this web application using Node.JS based on Express framework. Used MySQL as the Database Management System. The application was developed in Cloud 9 and deployed to Heroku. During the deployment process, data was migrated to Heroku using ClearDB addon.
 
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+This application provides a clear user interface for users to manipulate the data. The database has 3 tables: users, books and reviews. Users can do CRUD(Create Read Update Delete) operations to those 3 tables easily.
 
-
-Welcome to your Node.js project on Cloud9 IDE!
-
-This chat example showcases how to use `socket.io` with a static `express` server.
-
-## Running the server
-
-1) Open `server.js` and start the app by clicking on the "Run" button in the top menu.
-
-2) Alternatively you can launch the app from the Terminal:
-
-    $ node server.js
-
-Once the server is running, open the project in the shape of 'https://projectname-username.c9users.io/'. As you enter your name, watch the Users list (on the left) update. Once you press Enter or Send, the message is shared with all connected clients.
+Here is the heroku link: https://calm-taiga-39676.herokuapp.com/

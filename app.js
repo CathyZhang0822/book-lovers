@@ -7,16 +7,11 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
 
-// mysql://b53c45e6d8dda1:34effbd9@us-cdbr-iron-east-01.cleardb.net/heroku_8174187062a364b?reconnect=true
+
 var connection = mysql.createConnection({
-//   host     : 'localhost',
-//   user     : 'cathypangpang',  
-//   database : 'join_us'         
-    host     : 'us-cdbr-iron-east-01.cleardb.net',
-    user     : 'b53c45e6d8dda1',
-    password : '34effbd9',
-    database : 'heroku_8174187062a364b'
-  
+  host     : 'localhost',
+  user     : 'cathypangpang',  
+  database : 'join_us'         
 });
 
 connection.connect();
